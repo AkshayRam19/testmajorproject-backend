@@ -9,4 +9,4 @@ firebase-admin
 requests
 python-dotenv
 google-generativeai
-gunicorn
+gunicorn==23.0.0
