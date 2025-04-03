@@ -4,6 +4,8 @@ import pandas as pd
 import logging
 import traceback
 from flask_cors import CORS
+import os
+
 
 # ✅ Import Firebase & Utility Functions
 from firebase_db import store_crop_recommendation, store_sensor_data, store_pump_status
@@ -147,4 +149,5 @@ def get_weather_data():
         return jsonify({"error": f"An error occurred: {str(e)}"}), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Use Render's assigned port
+    app.run(host='0.0.0.0', port=port, debug=False)
