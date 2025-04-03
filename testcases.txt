@@ -1,0 +1,57 @@
+Commands for Windows CMD
+📌 Use them as a single line in Windows Command Prompt:
+
+ High Nitrogen & Rainfall (Wet Climate)
+
+curl -X POST "http://127.0.0.1:5000/recommend_crop" -H "Content-Type: application/json" -d "{\"user_id\":\"user1\",\"N\":90,\"P\":40,\"K\":30,\"temperature\":28,\"humidity\":80,\"ph\":6.2,\"rainfall\":250}"
+ - Balanced Nutrients & Moderate Rainfall
+
+curl -X POST "http://127.0.0.1:5000/recommend_crop" -H "Content-Type: application/json" -d "{\"user_id\":\"user2\",\"N\":50,\"P\":50,\"K\":50,\"temperature\":24,\"humidity\":65,\"ph\":6.5,\"rainfall\":120}"
+ - High Temperature, Low Humidity
+
+curl -X POST "http://127.0.0.1:5000/recommend_crop" -H "Content-Type: application/json" -d "{\"user_id\":\"user3\",\"N\":45,\"P\":40,\"K\":50,\"temperature\":37,\"humidity\":35,\"ph\":6.8,\"rainfall\":80}"
+ High Potassium & Rainfall
+
+curl -X POST "http://127.0.0.1:5000/recommend_crop" -H "Content-Type: application/json" -d "{\"user_id\":\"user4\",\"N\":40,\"P\":50,\"K\":85,\"temperature\":30,\"humidity\":70,\"ph\":6.4,\"rainfall\":170}"
+ Acidic Soil & High Humidity
+
+curl -X POST "http://127.0.0.1:5000/recommend_crop" -H "Content-Type: application/json" -d "{\"user_id\":\"user5\",\"N\":40,\"P\":45,\"K\":50,\"temperature\":23,\"humidity\":90,\"ph\":4.3,\"rainfall\":180}"
+ Dry Climate, Medium Nutrients
+
+curl -X POST "http://127.0.0.1:5000/recommend_crop" -H "Content-Type: application/json" -d "{\"user_id\":\"user6\",\"N\":50,\"P\":35,\"K\":40,\"temperature\":35,\"humidity\":40,\"ph\":6.8,\"rainfall\":60}"
+ High Temperature, Dry Climate
+
+curl -X POST "http://127.0.0.1:5000/recommend_crop" -H "Content-Type: application/json" -d "{\"user_id\":\"user7\",\"N\":35,\"P\":40,\"K\":45,\"temperature\":38,\"humidity\":30,\"ph\":6.5,\"rainfall\":50}"
+ High Humidity & Medium Temperature
+
+curl -X POST "http://127.0.0.1:5000/recommend_crop" -H "Content-Type: application/json" -d "{\"user_id\":\"user8\",\"N\":45,\"P\":50,\"K\":55,\"temperature\":25,\"humidity\":75,\"ph\":6.2,\"rainfall\":140}"
+ High Rainfall, Low pH (Acidic)
+
+curl -X POST "http://127.0.0.1:5000/recommend_crop" -H "Content-Type: application/json" -d "{\"user_id\":\"user9\",\"N\":55,\"P\":45,\"K\":60,\"temperature\":24,\"humidity\":90,\"ph\":4.8,\"rainfall\":200}"
+ Low pH, Moderate Rainfall
+
+curl -X POST "http://127.0.0.1:5000/recommend_crop" -H "Content-Type: application/json" -d "{\"user_id\":\"user10\",\"N\":40,\"P\":50,\"K\":55,\"temperature\":25,\"humidity\":55,\"ph\":5.2,\"rainfall\":95}"
+ High pH (Alkaline Soil)
+
+curl -X POST "http://127.0.0.1:5000/recommend_crop" -H "Content-Type: application/json" -d "{\"user_id\":\"user11\",\"N\":50,\"P\":60,\"K\":70,\"temperature\":28,\"humidity\":65,\"ph\":8.2,\"rainfall\":120}"
+- High Potassium, Medium Rainfall
+
+curl -X POST "http://127.0.0.1:5000/recommend_crop" -H "Content-Type: application/json" -d "{\"user_id\":\"user12\",\"N\":40,\"P\":45,\"K\":80,\"temperature\":30,\"humidity\":70,\"ph\":6.7,\"rainfall\":160}"
+- Medium Nutrients, Balanced Climate
+
+curl -X POST "http://127.0.0.1:5000/recommend_crop" -H "Content-Type: application/json" -d "{\"user_id\":\"user13\",\"N\":50,\"P\":50,\"K\":50,\"temperature\":28,\"humidity\":70,\"ph\":6.5,\"rainfall\":110}"
+  - Low Nitrogen, High Phosphorus
+
+curl -X POST "http://127.0.0.1:5000/recommend_crop" -H "Content-Type: application/json" -d "{\"user_id\":\"user14\",\"N\":20,\"P\":80,\"K\":40,\"temperature\":26,\"humidity\":55,\"ph\":6.9,\"rainfall\":85}"
+ High Phosphorus & Low Rainfall
+
+curl -X POST "http://127.0.0.1:5000/recommend_crop" -H "Content-Type: application/json" -d "{\"user_id\":\"user15\",\"N\":30,\"P\":85,\"K\":45,\"temperature\":26,\"humidity\":55,\"ph\":7.0,\"rainfall\":80}"
+ Moderate Rainfall, Neutral pH
+
+curl -X POST "http://127.0.0.1:5000/recommend_crop" -H "Content-Type: application/json" -d "{\"user_id\":\"user16\",\"N\":40,\"P\":50,\"K\":55,\"temperature\":27,\"humidity\":65,\"ph\":6.5,\"rainfall\":100}"
+- Balanced Nutrients, Low Rainfall
+
+curl -X POST "http://127.0.0.1:5000/recommend_crop" -H "Content-Type: application/json" -d "{\"user_id\":\"user17\",\"N\":50,\"P\":40,\"K\":35,\"temperature\":27,\"humidity\":60,\"ph\":6.5,\"rainfall\":50}"
+- Dry Conditions, Medium pH
+
+curl -X POST "http://127.0.0.1:5000/recommend_crop" -H "Content-Type: application/json" -d "{\"user_id\":\"user18\",\"N\":45,\"P\":45,\"K\":50,\"temperature\":30,\"humidity\":55,\"ph\":6.6,\"rainfall\":70}"

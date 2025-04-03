@@ -1,0 +1,44 @@
+{
+    "Rice": {
+        "temperature": [20, 35],
+        "humidity": [60, 90],
+        "rainfall": [200, 300],
+        "soil_moisture": [60, 100]
+    },
+    "Wheat": {
+        "temperature": [15, 25],
+        "humidity": [40, 60],
+        "rainfall": [50, 120],
+        "soil_moisture": [40, 70]
+    },
+    "Maize": {
+        "temperature": [20, 35],
+        "humidity": [50, 80],
+        "rainfall": [100, 200],
+        "soil_moisture": [50, 80]
+    },
+    "Cotton": {
+        "temperature": [25, 40],
+        "humidity": [40, 60],
+        "rainfall": [50, 150],
+        "soil_moisture": [30, 60]
+    },
+    "Banana": {
+        "temperature": [26, 30],
+        "humidity": [70, 90],
+        "rainfall": [150, 250],
+        "soil_moisture": [60, 100]
+    },
+    "Coffee": {
+        "temperature": [18, 25],
+        "humidity": [75, 90],
+        "rainfall": [150, 300],
+        "soil_moisture": [50, 80]
+    },
+    "Mango": {
+        "temperature": [25, 35],
+        "humidity": [60, 80],
+        "rainfall": [100, 200],
+        "soil_moisture": [40, 70]
+    }
+}
