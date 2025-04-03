@@ -19,35 +19,36 @@ if not firebase_admin._apps:
         raise
 
 # ✅ Function to Store Crop Recommendation
-def store_crop_recommendation(user_id, crop, soil_data):
+def store_crop_recommendation(crop, soil_data, weather_data):
     """
-    Stores the recommended crop in Firestore for a specific user.
+    Stores the recommended crop along with soil and weather data in Firestore.
     """
     try:
         data = {
             "recommended_crop": crop,
             "soil_data": soil_data,
+            "weather_data": weather_data,  # ✅ Include weather data
             "timestamp": datetime.utcnow()
         }
-        db.collection("crop_recommendations").document(user_id).set(data)
-        logger.info(f"✅ Crop recommendation saved for user {user_id}.")
+        db.collection("crop_recommendations").add(data)  # ✅ Using .add() instead of user_id
+        logger.info(f"✅ Crop recommendation saved successfully.")
     except Exception as e:
         logger.error(f"❌ Firebase Error (Crop Recommendation): {e}")
 
 # ✅ Function to Store Sensor Data
-def store_sensor_data(user_id, sensor_data):
+def store_sensor_data(sensor_data):
     """
     Stores sensor data (temperature, humidity, soil moisture, etc.) in Firestore.
     """
     try:
         sensor_data["timestamp"] = datetime.utcnow()
-        db.collection("sensor_data").document(user_id).set(sensor_data)
-        logger.info(f"✅ Sensor data saved for user {user_id}.")
+        db.collection("sensor_data").add(sensor_data)
+        logger.info("✅ Sensor data saved.")
     except Exception as e:
         logger.error(f"❌ Firebase Error (Sensor Data): {e}")
 
 # ✅ Function to Store Pump Status
-def store_pump_status(user_id, selected_crop, pump_status, sensor_data, weather_data):
+def store_pump_status(selected_crop, pump_status, sensor_data, weather_data):
     """
     Stores pump status along with sensor & weather data in Firestore.
     """
@@ -59,7 +60,7 @@ def store_pump_status(user_id, selected_crop, pump_status, sensor_data, weather_
             "weather_data": weather_data,
             "timestamp": datetime.utcnow()
         }
-        db.collection("pump_status").document(user_id).set(data)
-        logger.info(f"✅ Pump status saved for user {user_id}.")
+        db.collection("pump_status").add(data)
+        logger.info("✅ Pump status saved.")
     except Exception as e:
         logger.error(f"❌ Firebase Error (Pump Status): {e}")
