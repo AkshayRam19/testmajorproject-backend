@@ -5,11 +5,10 @@ import logging
 import traceback
 from flask_cors import CORS
 import os
-import threading
-import time
+
 
 # ✅ Import Firebase & Utility Functions
-from firebase_db import store_crop_recommendation, store_sensor_data, store_pump_status, get_user_cities, send_weather_notification
+from firebase_db import store_crop_recommendation, store_sensor_data, store_pump_status
 from sensor_simulation import generate_sensor_data
 from weather_api import get_weather
 from irrigation_control import control_pump
@@ -113,7 +112,6 @@ def get_pump_status():
     except Exception as e:
         logger.error(f"❌ Error in /get_pump_status: {str(e)}")
         return jsonify({"error": f"❌ Internal Server Error: {str(e)}"}), 500
-
 # ✅ AI Chatbot API
 @app.route('/get_chatbot_response', methods=['POST'])
 def get_chatbot_response():
@@ -149,24 +147,6 @@ def get_weather_data():
     except Exception as e:
         logger.error(f"❌ Error in /get_weather: {e}")
         return jsonify({"error": f"An error occurred: {str(e)}"}), 500
-
-# ✅ Weather Notification Task (Runs Every 6 Hours)
-def weather_notification_scheduler():
-    while True:
-        try:
-            cities = get_user_cities()
-            for city in cities:
-                weather_data = get_weather(city)
-                if weather_data and weather_data.get("rainfall", 0) > 0:
-                    send_weather_notification(city, weather_data)  # ✅ Notify users of rain
-            logger.info("✅ Weather notifications sent successfully.")
-        except Exception as e:
-            logger.error(f"❌ Error in weather notification scheduler: {e}")
-        time.sleep(21600)  # Sleep for 6 hours (21600 seconds)
-
-# ✅ Start Background Weather Notification Task
-weather_thread = threading.Thread(target=weather_notification_scheduler, daemon=True)
-weather_thread.start()
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))  # Use Render's assigned port

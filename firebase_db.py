@@ -1,5 +1,5 @@
 import firebase_admin
-from firebase_admin import credentials, firestore, messaging
+from firebase_admin import credentials, firestore
 import logging
 from datetime import datetime
 
@@ -27,10 +27,10 @@ def store_crop_recommendation(crop, soil_data, weather_data):
         data = {
             "recommended_crop": crop,
             "soil_data": soil_data,
-            "weather_data": weather_data,
+            "weather_data": weather_data,  # ✅ Include weather data
             "timestamp": datetime.utcnow()
         }
-        db.collection("crop_recommendations").add(data)
+        db.collection("crop_recommendations").add(data)  # ✅ Using .add() instead of user_id
         logger.info(f"✅ Crop recommendation saved successfully.")
     except Exception as e:
         logger.error(f"❌ Firebase Error (Crop Recommendation): {e}")
@@ -64,37 +64,3 @@ def store_pump_status(selected_crop, pump_status, sensor_data, weather_data):
         logger.info("✅ Pump status saved.")
     except Exception as e:
         logger.error(f"❌ Firebase Error (Pump Status): {e}")
-
-# ✅ Function to Get Unique User Cities (For Weather Notifications)
-def get_user_cities():
-    """
-    Retrieves unique cities where users have entered crop data.
-    """
-    try:
-        recommendations = db.collection("crop_recommendations").stream()
-        cities = {doc.to_dict().get("soil_data", {}).get("city") for doc in recommendations}
-        cities = {city for city in cities if city}  # Remove None values
-        logger.info(f"✅ Retrieved cities: {cities}")
-        return list(cities)
-    except Exception as e:
-        logger.error(f"❌ Firebase Error (Get Cities): {e}")
-        return []
-
-# ✅ Function to Send Weather Notification
-def send_weather_notification(city, weather_data):
-    """
-    Sends a push notification if rain is detected in the user's city.
-    """
-    try:
-        if weather_data.get("rainfall", 0) > 0:  # ✅ Check for rain
-            message = messaging.Message(
-                notification=messaging.Notification(
-                    title="🌧️ Rain Alert!",
-                    body=f"Rain detected in {city}. Adjust irrigation accordingly!"
-                ),
-                topic="weather_alerts"  # ✅ Broadcast to all users subscribed
-            )
-            response = messaging.send(message)
-            logger.info(f"✅ Weather notification sent: {response}")
-    except Exception as e:
-        logger.error(f"❌ Firebase Error (Weather Notification): {e}")
